@@ -13,7 +13,6 @@ class Transaction extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
