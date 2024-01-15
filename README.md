@@ -1,17 +1,13 @@
 # adhiancalwanugraha_motionintern_week_1
 
-A new Flutter project.
+Week 1 Assignment.
 
-## Getting Started
+## Product Detail Page & Transaction Page
 
-This project is a starting point for a Flutter application.
+<p align="center">
+  <img src="https://github.com/ardhiancalwa/intern-motion/assets/75600806/dd39abf6-0129-4d45-9590-6a1514eb7e3e" alt="Product Detail Page" style="width:45%;">
+  <img src="https://github.com/ardhiancalwa/intern-motion/assets/75600806/c4088dc2-6cc5-4d8b-839f-c1ed9660aaac" alt="Transaction Page" style="width:45%;">
+</p>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
