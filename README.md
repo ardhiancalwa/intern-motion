@@ -1,3 +1,4 @@
-# motion_flutter_firebase
+# Todo List App
 
-A new Flutter project.
+Assignment Week 7
+
