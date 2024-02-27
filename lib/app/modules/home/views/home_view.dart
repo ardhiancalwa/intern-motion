@@ -85,7 +85,7 @@ class HomeView extends GetView<HomeController> {
                               ],
                             ),
                             GestureDetector(
-                              onTap: () => controller.toRiwayatView(),
+                              onTap: () => controller.toRiwayatPendapatanView(),
                               child: Text(
                                 'Lihat Riwayat',
                                 style: TextStyle(

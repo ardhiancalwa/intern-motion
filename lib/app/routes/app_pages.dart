@@ -4,6 +4,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/riwayat/bindings/riwayat_binding.dart';
 import '../modules/riwayat/views/riwayat_view.dart';
+import '../modules/riwayat_pendapatan/bindings/riwayat_pendapatan_binding.dart';
+import '../modules/riwayat_pendapatan/views/riwayat_pendapatan_view.dart';
 
 part 'app_routes.dart';
 
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.RIWAYAT,
       page: () => const RiwayatView(),
       binding: RiwayatBinding(),
+    ),
+    GetPage(
+      name: _Paths.RIWAYAT_PENDAPATAN,
+      page: () => const RiwayatPendapatanView(),
+      binding: RiwayatPendapatanBinding(),
     ),
   ];
 }

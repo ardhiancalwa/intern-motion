@@ -11,7 +11,7 @@ class HomeController extends GetxController {
     produkDiproses: 100,
   );
 
-  void toRiwayatView() {
-    Get.toNamed(Routes.RIWAYAT);
+  void toRiwayatPendapatanView() {
+    Get.toNamed(Routes.RIWAYAT_PENDAPATAN);
   }
 }

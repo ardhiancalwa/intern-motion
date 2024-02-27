@@ -1,7 +1,8 @@
-import 'package:challenge_motion_week_8/app/data/model/riwayat.dart';
 import 'package:get/get.dart';
 
-class RiwayatController extends GetxController {
+import '../../../data/model/riwayat.dart';
+
+class RiwayatPendapatanController extends GetxController {
   List<RiwayatModel> riwayatModel = [];
 
   @override
@@ -13,20 +14,20 @@ class RiwayatController extends GetxController {
   void loadRiwayatModel() {
     riwayatModel = [
       RiwayatModel(
-        image: 'brokoli',
+        image: 'wallet-white',
         namaProduk: 'Produk Brokoli',
-        deskripsi: 'Permintaan Berhasil Dilakukan',
+        deskripsi: 'Pendapatan Uang Berhasil Ditarik',
         tanggal: 'Sep 27',
         jam: '10.57',
-        number: 100000,
+        number: 140000,
       ),
       RiwayatModel(
-        image: 'brokoli',
+        image: 'wallet-white',
         namaProduk: 'Produk Brokoli',
-        deskripsi: 'Permintaan Berhasil Dilakukan',
+        deskripsi: 'Pendapatan Uang Berhasil Ditarik',
         tanggal: 'Sep 27',
         jam: '10.57',
-        number: 100000,
+        number: 300000,
       ),
     ];
   }
