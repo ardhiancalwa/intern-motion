@@ -1,5 +1,4 @@
 import 'package:challenge_motion_week_8/app/data/model/riwayat.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RiwayatController extends GetxController {
