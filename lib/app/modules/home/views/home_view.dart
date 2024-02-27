@@ -7,7 +7,8 @@ import '../../../shared/widgets/bottom_nav_bar.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  final _pendapatanController = TextEditingController();
+  HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +105,188 @@ class HomeView extends GetView<HomeController> {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.bottomSheet(
+                                Container(
+                                  height: 237,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                    ),
+                                    color: white,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 19, vertical: 28),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'From Tarik Pendapatan ',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        RichText(
+                                          text: TextSpan(
+                                            text: 'Catatan : ',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 10,
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    'Nominal tidak lebih dari ',
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: 'Pemasukan',
+                                                style: TextStyle(
+                                                  color: primaryColor,
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextField(
+                                          keyboardType: TextInputType.number,
+                                          controller: _pendapatanController,
+                                          decoration: InputDecoration(
+                                            hintText: '8000',
+                                            hintStyle: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              borderSide: BorderSide(
+                                                color: bottomNav,
+                                              ),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              borderSide: BorderSide(
+                                                color: bottomNav,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 12,
+                                        ),
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: primaryShade_3,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  5,
+                                                ),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Get.back();
+                                              Get.dialog(
+                                                transitionDuration: Duration(
+                                                  milliseconds: 500,
+                                                ),
+                                                Center(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            20.0),
+                                                    child: Container(
+                                                      height: 275,
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
+                                                        ),
+                                                        color: white,
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(15.0),
+                                                        child: Column(
+                                                          children: [
+                                                            Image.asset(
+                                                              'assets/images/isEmpty/success.png',
+                                                              height: 166,
+                                                              width: 260,
+                                                            ),
+                                                            SizedBox(
+                                                              height: 3,
+                                                            ),
+                                                            Text(
+                                                              'Berhasil tarik uang',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                color: Colors
+                                                                    .black,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none,
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height: 5,
+                                                            ),
+                                                            Text(
+                                                              'Berhasil tarik dana, estimasi pencairan 2-7 hari, jangan lupa cek notifikasi',
+                                                              style: TextStyle(
+                                                                color:
+                                                                    bottomNav,
+                                                                fontSize: 12,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none,
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            child: Text(
+                                              'Tarik',
+                                              style: TextStyle(
+                                                color: white,
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
                             child: Text(
                               'Tarik Pendapatan',
                               style: TextStyle(
@@ -117,7 +299,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 28,
                 ),
                 Column(
