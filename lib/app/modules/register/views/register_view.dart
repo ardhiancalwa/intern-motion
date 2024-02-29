@@ -1,34 +1,46 @@
-import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/login_controller.dart';
+import '../../../shared/themes/colors.dart';
+import '../controllers/register_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  LoginView({Key? key}) : super(key: key);
+class RegisterView extends GetView<RegisterController> {
+  const RegisterView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-        ),
-        body: Center(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/items/login.png',
-                height: 118,
-                width: 127,
-              ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 19),
                 child: Column(
                   children: [
                     TextField(
+                      controller: controller.fullname,
+                      decoration: InputDecoration(
+                        labelText: 'Nama Lengkap',
+                        labelStyle: TextStyle(color: bottomNav),
+                        fillColor: bottomNav,
+                        focusColor: bottomNav,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: bottomNav),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: bottomNav,
+                          ),
+                        ),
+                      ),
+                    ),
+                    TextField(
                       keyboardType: TextInputType.emailAddress,
-                      controller: controller.emailController,
+                      controller: controller.fullname,
                       decoration: InputDecoration(
                         labelText: 'Email',
                         labelStyle: TextStyle(color: bottomNav),
@@ -44,9 +56,26 @@ class LoginView extends GetView<LoginController> {
                         ),
                       ),
                     ),
+                    TextField(
+                      controller: controller.fullname,
+                      decoration: InputDecoration(
+                        labelText: 'Alamat',
+                        labelStyle: TextStyle(color: bottomNav),
+                        fillColor: bottomNav,
+                        focusColor: bottomNav,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: bottomNav),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: bottomNav,
+                          ),
+                        ),
+                      ),
+                    ),
                     Obx(
                       () => TextField(
-                        controller: controller.passwordController,
+                        controller: controller.password,
                         decoration: InputDecoration(
                           labelText: 'Password',
                           hintStyle: TextStyle(color: bottomNav),
@@ -80,23 +109,44 @@ class LoginView extends GetView<LoginController> {
                         obscureText: controller.passwordHidden.value,
                       ),
                     ),
-                    SizedBox(
-                      height: 28,
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          'lupa password?',
-                          style: TextStyle(
-                            color: primaryColor,
+                    Obx(
+                      () => TextField(
+                        controller: controller.confirmPassword,
+                        decoration: InputDecoration(
+                          labelText: 'Konfirmasi Password',
+                          hintStyle: TextStyle(color: bottomNav),
+                          labelStyle: TextStyle(color: bottomNav),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: bottomNav),
+                          ),
+                          fillColor: bottomNav,
+                          focusColor: bottomNav,
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.passwordHidden.value =
+                                  !controller.passwordHidden.value;
+                            },
+                            icon: controller.passwordHidden.value
+                                ? Icon(
+                                    Icons.visibility_off,
+                                    color: bottomNav,
+                                  )
+                                : Icon(
+                                    Icons.visibility,
+                                    color: bottomNav,
+                                  ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: bottomNav,
+                            ),
                           ),
                         ),
+                        obscureText: controller.passwordHidden.value,
                       ),
                     ),
                     SizedBox(
-                      height: 38,
+                      height: 48,
                     ),
                     SizedBox(
                       width: double.infinity,
@@ -109,29 +159,30 @@ class LoginView extends GetView<LoginController> {
                         ),
                         onPressed: () {},
                         child: Text(
-                          'Masuk',
+                          'Daftar',
                           style: TextStyle(
                             color: white,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 48,
+                      height: 40,
                     ),
                     GestureDetector(
                       onTap: () {
-                        controller.toRegisterPage();
+                        controller.toLoginPage();
                       },
                       child: RichText(
                         text: TextSpan(
-                          text: 'Belum memiliki akun?',
+                          text: 'Sudah memiliki akun?',
                           style: TextStyle(
                             color: Colors.black,
                           ),
                           children: [
                             TextSpan(
-                              text: ' Daftar',
+                              text: ' Login',
                               style: TextStyle(
                                 color: primaryColor,
                                 fontWeight: FontWeight.bold,
@@ -145,7 +196,7 @@ class LoginView extends GetView<LoginController> {
                 ),
               ),
               SizedBox(
-                height: 68,
+                height: 41,
               ),
               Container(
                 width: double.infinity,
@@ -159,6 +210,8 @@ class LoginView extends GetView<LoginController> {
               )
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
