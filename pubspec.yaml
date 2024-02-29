@@ -22,4 +22,4 @@ flutter:
   assets:
     - assets/images/profil/
     - assets/images/produk/
-    - assets/images/isEmpty/
+    - assets/images/items/

@@ -30,7 +30,7 @@ class RiwayatPendapatanView extends GetView<RiwayatPendapatanController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/isEmpty/kosong.png',
+                    'assets/images/items/kosong.png',
                   ),
                   SizedBox(
                     height: 28,

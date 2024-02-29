@@ -229,7 +229,7 @@ class HomeView extends GetView<HomeController> {
                                                         child: Column(
                                                           children: [
                                                             Image.asset(
-                                                              'assets/images/isEmpty/success.png',
+                                                              'assets/images/items/success.png',
                                                               height: 166,
                                                               width: 260,
                                                             ),
