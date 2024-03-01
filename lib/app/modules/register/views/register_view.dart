@@ -22,7 +22,7 @@ class RegisterView extends GetView<RegisterController> {
                 child: Column(
                   children: [
                     TextField(
-                      controller: controller.fullname,
+                      controller: controller.fullnameController,
                       decoration: InputDecoration(
                         labelText: 'Nama Lengkap',
                         labelStyle: TextStyle(color: bottomNav),
@@ -40,7 +40,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                     TextField(
                       keyboardType: TextInputType.emailAddress,
-                      controller: controller.fullname,
+                      controller: controller.emailController,
                       decoration: InputDecoration(
                         labelText: 'Email',
                         labelStyle: TextStyle(color: bottomNav),
@@ -57,7 +57,7 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                     ),
                     TextField(
-                      controller: controller.fullname,
+                      controller: controller.alamatController,
                       decoration: InputDecoration(
                         labelText: 'Alamat',
                         labelStyle: TextStyle(color: bottomNav),
@@ -75,7 +75,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                     Obx(
                       () => TextField(
-                        controller: controller.password,
+                        controller: controller.passwordController,
                         decoration: InputDecoration(
                           labelText: 'Password',
                           hintStyle: TextStyle(color: bottomNav),
@@ -111,7 +111,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                     Obx(
                       () => TextField(
-                        controller: controller.confirmPassword,
+                        controller: controller.confirmPasswordController,
                         decoration: InputDecoration(
                           labelText: 'Konfirmasi Password',
                           hintStyle: TextStyle(color: bottomNav),
@@ -157,7 +157,12 @@ class RegisterView extends GetView<RegisterController> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.authController.signUp(
+                            controller.emailController.text,
+                            controller.passwordController.text,
+                          );
+                        },
                         child: Text(
                           'Daftar',
                           style: TextStyle(
@@ -171,9 +176,7 @@ class RegisterView extends GetView<RegisterController> {
                       height: 40,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        controller.toLoginPage();
-                      },
+                      onTap: () => Get.back(),
                       child: RichText(
                         text: TextSpan(
                           text: 'Sudah memiliki akun?',

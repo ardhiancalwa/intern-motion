@@ -1,3 +1,4 @@
+import 'package:challenge_motion_week_8/app/modules/register/controllers/register_controller.dart';
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class HomeView extends GetView<HomeController> {
           preferredSize: const Size.fromHeight(100),
           child: AppBar(
             backgroundColor: secondaryShade_3,
+            automaticallyImplyLeading: false,
             title: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -379,7 +381,19 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                       ],
-                    )
+                    ),
+                    IconButton(
+                      onPressed: () => controller.authController.logout(),
+                      icon: Icon(
+                        Icons.logout,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => controller.toProfileView(),
+                      icon: Icon(
+                        Icons.favorite,
+                      ),
+                    ),
                   ],
                 ),
               ],
