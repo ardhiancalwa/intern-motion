@@ -1,5 +1,5 @@
-import 'package:challenge_motion_week_8/app/modules/register/controllers/register_controller.dart';
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,7 +8,9 @@ import '../../../shared/widgets/bottom_nav_bar.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  final user = FirebaseAuth.instance.currentUser!;
   final _pendapatanController = TextEditingController();
+
   HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                   Text(
-                    controller.homeModel.nama,
+                    'nama',
                     style: TextStyle(
                       color: white,
                       fontWeight: FontWeight.bold,

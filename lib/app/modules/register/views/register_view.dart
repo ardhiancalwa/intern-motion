@@ -73,6 +73,23 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                       ),
                     ),
+                    TextField(
+                      controller: controller.nomorTeleponController,
+                      decoration: InputDecoration(
+                        labelText: 'Nomor Telepon',
+                        labelStyle: TextStyle(color: bottomNav),
+                        fillColor: bottomNav,
+                        focusColor: bottomNav,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: bottomNav),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: bottomNav,
+                          ),
+                        ),
+                      ),
+                    ),
                     Obx(
                       () => TextField(
                         controller: controller.passwordController,
@@ -161,6 +178,9 @@ class RegisterView extends GetView<RegisterController> {
                           controller.authController.signUp(
                             controller.emailController.text,
                             controller.passwordController.text,
+                            controller.fullnameController.text,
+                            controller.alamatController.text,
+                            int.parse(controller.nomorTeleponController.text),
                           );
                         },
                         child: Text(

@@ -1,4 +1,6 @@
+
 import 'package:challenge_motion_week_8/app/routes/app_pages.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -23,12 +25,19 @@ class AuthController extends GetxController {
     }
   }
 
-  void signUp(String email, String password) async {
+  void signUp(String email, String password, String fullname, String alamat,
+      int nomor_telepon) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      await FirebaseFirestore.instance.collection('users').add({
+        'fullname': fullname,
+        'email': email,
+        'alamat': alamat,
+        'nomor_telepon': nomor_telepon,
+      });
       Get.offAllNamed(Routes.HOME);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -39,6 +48,19 @@ class AuthController extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+
+  List<String> docIds = [];
+
+  Future getDocId() async {
+    await FirebaseFirestore.instance.collection('users').get().then(
+          (snapshot) => snapshot.docs.forEach(
+            (document) {
+              print(document.reference);
+              docIds.add(document.reference.id);
+            },
+          ),
+        );
   }
 
   void logout() async {

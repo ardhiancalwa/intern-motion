@@ -1,11 +1,13 @@
 import 'package:challenge_motion_week_8/app/controllers/auth_controller.dart';
 import 'package:challenge_motion_week_8/app/data/model/home.dart';
-import 'package:challenge_motion_week_8/app/modules/register/controllers/register_controller.dart';
 import 'package:challenge_motion_week_8/app/routes/app_pages.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   final authController = Get.find<AuthController>();
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  
   // final registerController = Get.find<RegisterController>();
 
   HomeModel homeModel = HomeModel(

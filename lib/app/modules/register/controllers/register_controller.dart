@@ -8,6 +8,7 @@ class RegisterController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController alamatController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nomorTeleponController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   final authController = Get.find<AuthController>();
 
@@ -19,6 +20,7 @@ class RegisterController extends GetxController {
     passwordController.dispose();
     fullnameController.dispose();
     alamatController.dispose();
+    nomorTeleponController.dispose();
     super.dispose();
   }
 
