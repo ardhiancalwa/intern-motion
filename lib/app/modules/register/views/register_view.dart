@@ -162,7 +162,7 @@ class RegisterView extends GetView<RegisterController> {
                         obscureText: controller.passwordHidden.value,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 48,
                     ),
                     SizedBox(
@@ -192,7 +192,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     GestureDetector(
@@ -200,7 +200,7 @@ class RegisterView extends GetView<RegisterController> {
                       child: RichText(
                         text: TextSpan(
                           text: 'Sudah memiliki akun?',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                           ),
                           children: [
@@ -218,13 +218,13 @@ class RegisterView extends GetView<RegisterController> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 41,
               ),
               Container(
                 width: double.infinity,
                 height: 149,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/items/sayur.png"),
                     fit: BoxFit.fill,

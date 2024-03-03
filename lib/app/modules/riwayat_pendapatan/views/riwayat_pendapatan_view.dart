@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 import '../../../data/model/riwayat.dart';
 import '../../../shared/themes/colors.dart';
-import '../../../shared/widgets/bottom_nav_bar.dart';
 import '../controllers/riwayat_pendapatan_controller.dart';
 
 class RiwayatPendapatanView extends GetView<RiwayatPendapatanController> {
-  const RiwayatPendapatanView({Key? key}) : super(key: key);
+  final controller = Get.put(RiwayatPendapatanController());
+  RiwayatPendapatanView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,7 +117,6 @@ class RiwayatPendapatanView extends GetView<RiwayatPendapatanController> {
                 );
               },
             ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

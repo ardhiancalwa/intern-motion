@@ -1,5 +1,4 @@
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
-import 'package:challenge_motion_week_8/app/shared/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,7 +7,8 @@ import '../../../data/model/riwayat.dart';
 import '../controllers/riwayat_controller.dart';
 
 class RiwayatView extends GetView<RiwayatController> {
-  const RiwayatView({Key? key}) : super(key: key);
+  final controller = Get.put(RiwayatController());
+  RiwayatView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,7 +115,6 @@ class RiwayatView extends GetView<RiwayatController> {
                 );
               },
             ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
