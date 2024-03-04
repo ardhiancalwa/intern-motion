@@ -1,10 +1,14 @@
 import 'package:challenge_motion_week_8/app/controllers/landing_page_controller.dart';
+import 'package:challenge_motion_week_8/app/modules/profile/views/profile_view.dart';
+import 'package:challenge_motion_week_8/app/modules/riwayat/views/riwayat_view.dart';
+import 'package:challenge_motion_week_8/app/modules/riwayat_pendapatan/views/riwayat_pendapatan_view.dart';
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -399,6 +403,8 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomPage(),
     );
   }
 }
+

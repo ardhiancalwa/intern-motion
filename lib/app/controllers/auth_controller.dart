@@ -1,4 +1,3 @@
-
 import 'package:challenge_motion_week_8/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,36 +8,40 @@ class AuthController extends GetxController {
 
   Stream<User?> get streamStatus => auth.authStateChanges();
 
-  void signIn(String email, String password) async {
+  Future<bool> signIn(String email, String password) async {
     try {
-      await auth.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       Get.offAllNamed(Routes.HOME);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user != null) {
+          print(user.uid);
+        }
+      });
+      return true;
+    } catch (error) {
+      print('Error during sign-in: $error');
+      return false; // Sign-in failed
     }
   }
 
   void signUp(String email, String password, String fullname, String alamat,
-      int nomor_telepon) async {
+      int nomorTelepon) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      Get.offAllNamed(Routes.HOME);
       await FirebaseFirestore.instance.collection('users').add({
         'fullname': fullname,
         'email': email,
         'alamat': alamat,
-        'nomor_telepon': nomor_telepon,
+        'nomor_telepon': nomorTelepon,
       });
-      Get.offAllNamed(Routes.HOME);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -49,6 +52,8 @@ class AuthController extends GetxController {
       print(e);
     }
   }
+
+  
 
   List<String> docIds = [];
 

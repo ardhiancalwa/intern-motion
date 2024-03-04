@@ -4,8 +4,10 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/navbar/bindings/navbar_binding.dart';
-import '../modules/navbar/views/navbar_view.dart';
+import '../modules/new_password/bindings/new_password_binding.dart';
+import '../modules/new_password/views/new_password_view.dart';
+import '../modules/produk/bindings/produk_binding.dart';
+import '../modules/produk/views/produk_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -20,7 +22,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.NAVBAR;
 
   static final routes = [
     GetPage(
@@ -54,9 +56,14 @@ class AppPages {
       binding: ProfileBinding(),
     ),
     GetPage(
-      name: _Paths.NAVBAR,
-      page: () => NavbarView(),
-      binding: NavbarBinding(),
+      name: _Paths.NEW_PASSWORD,
+      page: () => const NewPasswordView(),
+      binding: NewPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUK,
+      page: () => const ProdukView(),
+      binding: ProdukBinding(),
     ),
   ];
 }

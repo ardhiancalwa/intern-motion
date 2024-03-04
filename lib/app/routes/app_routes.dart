@@ -11,6 +11,8 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const BOTTOM_NAV_BAR = _Paths.BOTTOM_NAV_BAR;
   static const NAVBAR = _Paths.NAVBAR;
+  static const NEW_PASSWORD = _Paths.NEW_PASSWORD;
+  static const PRODUK = _Paths.PRODUK;
 }
 
 abstract class _Paths {
@@ -23,4 +25,6 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const BOTTOM_NAV_BAR = '/bottom-nav-bar';
   static const NAVBAR = '/navbar';
+  static const NEW_PASSWORD = '/new-password';
+  static const PRODUK = '/produk';
 }

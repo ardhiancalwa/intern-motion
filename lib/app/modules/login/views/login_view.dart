@@ -108,10 +108,37 @@ class LoginView extends GetView<LoginController> {
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          onPressed: () => controller.authController.signIn(
-                            controller.emailController.text,
-                            controller.passwordController.text,
-                          ),
+                          onPressed: () {
+                            controller.authController
+                                .signIn(
+                              controller.emailController.text,
+                              controller.passwordController.text,
+                            )
+                                .then((signInSuccessful) {
+                              if (signInSuccessful) {
+                                Get.snackbar(
+                                  'Selamat',
+                                  'Login Berhasil',
+                                  backgroundColor: white.withOpacity(0.5),
+                                  colorText: primaryColor,
+                                  duration: Duration(seconds: 3),
+                                  animationDuration: Duration(seconds: 1),
+                                );
+                              } else {
+                                Get.snackbar(
+                                  'Gagal Login',
+                                  'Coba periksa email dan password anda',
+                                  backgroundColor: product.withOpacity(0.1),
+                                  colorText: product,
+                                  duration: Duration(seconds: 4),
+                                  animationDuration: Duration(seconds: 1),
+                                );
+                              }
+                            }).catchError((error) {
+                              print('Error during sign in: $error');
+                              // Handle other errors if needed
+                            });
+                          },
                           child: Text(
                             'Masuk',
                             style: TextStyle(

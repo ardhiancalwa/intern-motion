@@ -21,74 +21,29 @@ class RegisterView extends GetView<RegisterController> {
                 padding: const EdgeInsets.symmetric(horizontal: 19),
                 child: Column(
                   children: [
-                    TextField(
-                      controller: controller.fullnameController,
-                      decoration: InputDecoration(
-                        labelText: 'Nama Lengkap',
-                        labelStyle: TextStyle(color: bottomNav),
-                        fillColor: bottomNav,
-                        focusColor: bottomNav,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: bottomNav),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: bottomNav,
-                          ),
-                        ),
-                      ),
+                    InputText(
+                      controller: controller,
+                      tittle: 'Nama Lengkap',
+                      keyboard: TextInputType.text,
+                      textEditingController: controller.fullnameController,
                     ),
-                    TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: controller.emailController,
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: TextStyle(color: bottomNav),
-                        fillColor: bottomNav,
-                        focusColor: bottomNav,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: bottomNav),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: bottomNav,
-                          ),
-                        ),
-                      ),
+                    InputText(
+                      controller: controller,
+                      tittle: 'Email',
+                      keyboard: TextInputType.emailAddress,
+                      textEditingController: controller.emailController,
                     ),
-                    TextField(
-                      controller: controller.alamatController,
-                      decoration: InputDecoration(
-                        labelText: 'Alamat',
-                        labelStyle: TextStyle(color: bottomNav),
-                        fillColor: bottomNav,
-                        focusColor: bottomNav,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: bottomNav),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: bottomNav,
-                          ),
-                        ),
-                      ),
+                    InputText(
+                      controller: controller,
+                      tittle: 'Alamat',
+                      keyboard: TextInputType.text,
+                      textEditingController: controller.alamatController,
                     ),
-                    TextField(
-                      controller: controller.nomorTeleponController,
-                      decoration: InputDecoration(
-                        labelText: 'Nomor Telepon',
-                        labelStyle: TextStyle(color: bottomNav),
-                        fillColor: bottomNav,
-                        focusColor: bottomNav,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: bottomNav),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: bottomNav,
-                          ),
-                        ),
-                      ),
+                    InputText(
+                      controller: controller,
+                      tittle: 'Nomor Telepon',
+                      keyboard: TextInputType.phone,
+                      textEditingController: controller.nomorTeleponController,
                     ),
                     Obx(
                       () => TextField(
@@ -175,13 +130,20 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                         ),
                         onPressed: () {
-                          controller.authController.signUp(
-                            controller.emailController.text,
-                            controller.passwordController.text,
-                            controller.fullnameController.text,
-                            controller.alamatController.text,
-                            int.parse(controller.nomorTeleponController.text),
-                          );
+                          if (controller.confirmPasswordController.value ==
+                              controller.passwordController.value) {
+                            controller.authController.signUp(
+                              controller.emailController.text,
+                              controller.passwordController.text,
+                              controller.fullnameController.text,
+                              controller.alamatController.text,
+                              int.parse(
+                                controller.nomorTeleponController.text,
+                              ),
+                            );
+                          } else {
+                            Get.snackbar('Error', 'Tolong cek lagi!');
+                          }
                         },
                         child: Text(
                           'Daftar',
@@ -232,6 +194,43 @@ class RegisterView extends GetView<RegisterController> {
                 ),
               )
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class InputText extends StatelessWidget {
+  final String tittle;
+  final TextInputType keyboard;
+  final TextEditingController textEditingController;
+  const InputText({
+    super.key,
+    required this.controller,
+    required this.tittle,
+    required this.keyboard,
+    required this.textEditingController,
+  });
+
+  final RegisterController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      keyboardType: keyboard,
+      controller: textEditingController,
+      decoration: InputDecoration(
+        labelText: tittle,
+        labelStyle: TextStyle(color: bottomNav),
+        fillColor: bottomNav,
+        focusColor: bottomNav,
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: bottomNav),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: bottomNav,
           ),
         ),
       ),

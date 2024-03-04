@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../data/model/riwayat.dart';
 import '../../../shared/themes/colors.dart';
+import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/riwayat_pendapatan_controller.dart';
 
 class RiwayatPendapatanView extends GetView<RiwayatPendapatanController> {
@@ -117,6 +118,7 @@ class RiwayatPendapatanView extends GetView<RiwayatPendapatanController> {
                 );
               },
             ),
+            bottomNavigationBar: BottomPage(),
     );
   }
 }

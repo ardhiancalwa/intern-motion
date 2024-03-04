@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../data/model/riwayat.dart';
+import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/riwayat_controller.dart';
 
 class RiwayatView extends GetView<RiwayatController> {
@@ -115,6 +116,7 @@ class RiwayatView extends GetView<RiwayatController> {
                 );
               },
             ),
+            bottomNavigationBar: BottomPage(),
     );
   }
 }
