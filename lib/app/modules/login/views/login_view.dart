@@ -128,8 +128,8 @@ class LoginView extends GetView<LoginController> {
                                 Get.snackbar(
                                   'Gagal Login',
                                   'Coba periksa email dan password anda',
-                                  backgroundColor: product.withOpacity(0.1),
-                                  colorText: product,
+                                  backgroundColor: error.withOpacity(0.1),
+                                  colorText: error,
                                   duration: Duration(seconds: 4),
                                   animationDuration: Duration(seconds: 1),
                                 );

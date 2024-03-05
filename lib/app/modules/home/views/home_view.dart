@@ -385,18 +385,6 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ],
                   ),
-                  IconButton(
-                    onPressed: () => controller.authController.logout(),
-                    icon: Icon(
-                      Icons.logout,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () => controller.toProfileView(),
-                    icon: Icon(
-                      Icons.favorite,
-                    ),
-                  ),
                 ],
               ),
             ],
@@ -407,4 +395,3 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
-

@@ -73,7 +73,7 @@ class BottonProduk extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        Get.offAllNamed(Routes.RIWAYAT_PENDAPATAN);
+        Get.offAllNamed(Routes.PRODUK);
       },
       icon: Icon(
         Icons.apple,
