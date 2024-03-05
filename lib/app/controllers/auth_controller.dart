@@ -53,7 +53,26 @@ class AuthController extends GetxController {
     }
   }
 
-  
+  Future<bool> signUpProduk(String name, String harga, String kategori, String stok,
+      String durasiTahan, String deskripsi, String gram) async {
+    try {
+      await FirebaseFirestore.instance.collection('produk').add({
+        'name': name,
+        'price': harga,
+        'category': kategori,
+        'stok': stok,
+        'durasi': durasiTahan,
+        'deskripsi': deskripsi,
+        'gram': gram,
+      });
+      Get.offAllNamed(Routes.PRODUK);
+      return true; // Sign-up produk successful
+    } catch (e) {
+      print('Error during sign-up produk: $e');
+      // Handle specific error cases if needed
+      return false; // Sign-up produk failed
+    }
+  }
 
   List<String> docIds = [];
 

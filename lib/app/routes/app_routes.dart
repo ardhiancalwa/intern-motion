@@ -13,6 +13,8 @@ abstract class Routes {
   static const NAVBAR = _Paths.NAVBAR;
   static const NEW_PASSWORD = _Paths.NEW_PASSWORD;
   static const PRODUK = _Paths.PRODUK;
+  static const ADD_PRODUK = _Paths.ADD_PRODUK;
+  static const AYAM = _Paths.AYAM;
 }
 
 abstract class _Paths {
@@ -27,4 +29,6 @@ abstract class _Paths {
   static const NAVBAR = '/navbar';
   static const NEW_PASSWORD = '/new-password';
   static const PRODUK = '/produk';
+  static const ADD_PRODUK = '/add-produk';
+  static const AYAM = '/ayam';
 }

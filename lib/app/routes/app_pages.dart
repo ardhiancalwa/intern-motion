@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/add_produk/bindings/add_produk_binding.dart';
+import '../modules/add_produk/views/add_produk_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.PRODUK,
       page: () => const ProdukView(),
       binding: ProdukBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_PRODUK,
+      page: () => AddProdukView(),
+      binding: AddProdukBinding(),
     ),
   ];
 }

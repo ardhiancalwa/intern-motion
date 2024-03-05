@@ -1,23 +1,10 @@
+import 'package:challenge_motion_week_8/app/routes/app_pages.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class ProdukController extends GetxController {
-  //TODO: Implement ProdukController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  void toAddProdukView() {
+    Get.toNamed(Routes.ADD_PRODUK);
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

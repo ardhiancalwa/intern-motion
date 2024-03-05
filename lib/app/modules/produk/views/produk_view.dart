@@ -1,9 +1,11 @@
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../shared/widgets/bottomNavBar.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/produk_controller.dart';
 
 class ProdukView extends GetView<ProdukController> {
@@ -53,21 +55,159 @@ class ProdukView extends GetView<ProdukController> {
         ),
       ),
       endDrawer: Drawer(),
-      body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 4,
-        ),
-        itemCount: 2,
-        itemBuilder: (context, index) {
-          return Produk(
-            image: 'assets/images/produk/brokoli.png',
-            harga: 150000,
-            namaProduk: 'Brokoli',
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('produk').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child:
+                  CircularProgressIndicator(), // Placeholder for loading state
+            );
+          }
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          }
+          if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
+            return Center(
+              child: Text('No data available'), // Placeholder for empty state
+            );
+          }
+          return GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 3 / 4,
+            ),
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              DocumentSnapshot document = snapshot.data!.docs[index];
+              Map<String, dynamic> data =
+                  document.data() as Map<String, dynamic>;
+              return Produk(
+                image: 'assets/images/produk/brokoli.png',
+                harga: data['harga'],
+                namaProduk: data['name'],
+              );
+            },
           );
         },
       ),
-      bottomNavigationBar: BottomPage(),
+      bottomNavigationBar: BottomAppBar(
+        height: 55,
+        color: white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            BottonHome(),
+            BottonProduk(),
+            BottonAddProduk(),
+            BottonRiwayat(),
+            BottonProfile(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BottonAddProduk extends StatelessWidget {
+  const BottonAddProduk({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+      ),
+      onPressed: () {
+        Get.toNamed(Routes.ADD_PRODUK);
+      },
+      child: Icon(
+        Icons.add,
+        color: white,
+      ),
+    );
+  }
+}
+
+class BottonProfile extends StatelessWidget {
+  const BottonProfile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Get.offAllNamed(Routes.PROFILE);
+      },
+      icon: Icon(
+        Icons.person_2_outlined,
+        color: primaryColor,
+      ),
+    );
+  }
+}
+
+class BottonRiwayat extends StatelessWidget {
+  const BottonRiwayat({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Get.offAllNamed(Routes.RIWAYAT);
+      },
+      icon: Icon(
+        Icons.bookmark_border,
+        color: primaryColor,
+      ),
+    );
+  }
+}
+
+class BottonProduk extends StatelessWidget {
+  const BottonProduk({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Get.offAllNamed(Routes.PRODUK);
+      },
+      icon: Icon(
+        Icons.apple,
+        color: primaryColor,
+      ),
+    );
+  }
+}
+
+class BottonHome extends StatelessWidget {
+  const BottonHome({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Get.offAllNamed(Routes.HOME);
+      },
+      icon: Icon(
+        Icons.home,
+        color: primaryColor,
+      ),
     );
   }
 }
