@@ -93,7 +93,20 @@ class EditUserView extends GetView<EditUserController> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (controller.fullnameController.value != null) {
+                        controller.authController.updateUserData(
+                          'wzHoRL2VALvwxUM9TlVL',
+                          controller.fullnameController.text,
+                          controller.alamatController.text,
+                          int.parse(controller.nomorTeleponController.text),
+                          controller.emailController.text,
+                        );
+                        Get.back();
+                      } else {
+                        Get.snackbar('Error', 'Tolong cek lagi!');
+                      }
+                    },
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 25),
                       child: Text(

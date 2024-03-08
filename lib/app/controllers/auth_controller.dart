@@ -27,6 +27,21 @@ class AuthController extends GetxController {
     }
   }
 
+  void updateUserData(String userId, String fullname, String alamat,
+      int nomorTelepon, String email) async {
+    try {
+      await FirebaseFirestore.instance.collection('users').doc(userId).update({
+        'fullname': fullname,
+        'email': email,
+        'alamat': alamat,
+        'nomor_telepon': nomorTelepon,
+      });
+      print('User data updated successfully.');
+    } catch (e) {
+      print('Error updating user data: $e');
+    }
+  }
+
   void signUp(String email, String password, String fullname, String alamat,
       int nomorTelepon) async {
     try {
@@ -48,8 +63,8 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<bool> signUpProduk(String name, String harga, String kategori, String stok,
-      String durasiTahan, String deskripsi, String gram) async {
+  Future<bool> signUpProduk(String name, String harga, String kategori,
+      String stok, String durasiTahan, String deskripsi, String gram) async {
     try {
       await FirebaseFirestore.instance.collection('produk').add({
         'name': name,
