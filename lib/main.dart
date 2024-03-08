@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
+// Import the BottomnavbarView
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,16 +23,17 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final authControler = Get.put(AuthController(), permanent: true);
+    final authController = Get.put(AuthController(), permanent: true);
     return StreamBuilder<User?>(
-      stream: authControler.streamStatus,
+      stream: authController.streamStatus,
       builder: (context, snapshot) {
         print(snapshot);
         if (snapshot.connectionState == ConnectionState.active) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: "Application",
-            initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+            initialRoute:
+                snapshot.data != null ? Routes.HOME : Routes.LOGIN,
             getPages: AppPages.routes,
           );
         }

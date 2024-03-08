@@ -1,8 +1,6 @@
 import 'package:challenge_motion_week_8/app/controllers/landing_page_controller.dart';
-import 'package:challenge_motion_week_8/app/modules/profile/views/profile_view.dart';
-import 'package:challenge_motion_week_8/app/modules/riwayat/views/riwayat_view.dart';
-import 'package:challenge_motion_week_8/app/modules/riwayat_pendapatan/views/riwayat_pendapatan_view.dart';
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -27,28 +25,29 @@ class HomeView extends GetView<HomeController> {
         child: AppBar(
           backgroundColor: secondaryShade_3,
           automaticallyImplyLeading: false,
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Selamat Datang',
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 14,
-                  ),
-                ),
-                Text(
-                  'nama',
-                  style: TextStyle(
-                    color: white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
-            ),
+          title: StreamBuilder(
+            stream: FirebaseFirestore.instance.collection('users').snapshots(),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator(); // Placeholder for loading state
+              }
+              if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              }
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data =
+                      document.data() as Map<String, dynamic>;
+                  // String documentId = document.id;
+                  return TitleUser(
+                    fullname: data[
+                        'fullname'], // Assuming you want to use email from Firestore document
+                    // docId: documentId,
+                  );
+                }).toList(),
+              );
+            },
           ),
           actions: [
             Padding(
@@ -392,6 +391,41 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
       bottomNavigationBar: BottomPage(),
+    );
+  }
+}
+
+class TitleUser extends StatelessWidget {
+  String fullname;
+  TitleUser({
+    super.key,
+    required this.fullname,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Selamat Datang',
+            style: TextStyle(
+              color: white,
+              fontSize: 14,
+            ),
+          ),
+          Text(
+            fullname,
+            style: TextStyle(
+              color: white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

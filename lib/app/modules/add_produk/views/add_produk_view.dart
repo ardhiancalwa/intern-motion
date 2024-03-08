@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -34,15 +33,17 @@ class AddProdukView extends GetView<AddProdukController> {
               Text(
                 'Foto Produk',
               ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 72,
-                  width: 76,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: white,
-                  ),
+              Container(
+                height: 72,
+                width: 76,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: white,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    controller.toUploadImageView();
+                  },
                   child: Icon(
                     Icons.camera_alt_outlined,
                     size: 24,
@@ -156,22 +157,14 @@ class AddProdukView extends GetView<AddProdukController> {
                       controller.beratController.text,
                     )
                         .then((signUpProdukSuccess) {
-                      if (signUpProdukSuccess != null) {
+                      if (signUpProdukSuccess != "") {
+                        // If signUpProdukSuccess is empty, it means sign up was successful
                         Get.snackbar(
-                          'Selamat',
+                          'Success',
                           'Produk berhasil ditambahkan',
                           backgroundColor: white.withOpacity(0.5),
                           colorText: primaryColor,
                           duration: Duration(seconds: 3),
-                          animationDuration: Duration(seconds: 1),
-                        );
-                      } else {
-                        Get.snackbar(
-                          'Gagal',
-                          'Gagal menambahkan produk. Silakan coba lagi.',
-                          backgroundColor: error.withOpacity(0.1),
-                          colorText: error,
-                          duration: Duration(seconds: 4),
                           animationDuration: Duration(seconds: 1),
                         );
                       }

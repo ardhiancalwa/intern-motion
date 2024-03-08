@@ -30,11 +30,6 @@ class AuthController extends GetxController {
   void signUp(String email, String password, String fullname, String alamat,
       int nomorTelepon) async {
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
       Get.offAllNamed(Routes.HOME);
       await FirebaseFirestore.instance.collection('users').add({
         'fullname': fullname,

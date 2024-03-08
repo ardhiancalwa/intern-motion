@@ -13,7 +13,15 @@ class RiwayatController extends GetxController {
   void loadRiwayatModel() {
     riwayatModel = [
       RiwayatModel(
-        image: 'brokoli',
+        image: 'produk1',
+        namaProduk: 'Produk Bayam Saung',
+        deskripsi: 'Permintaan Berhasil Dilakukan',
+        tanggal: 'Sep 27',
+        jam: '10.57',
+        number: 100000,
+      ),
+      RiwayatModel(
+        image: 'produk2',
         namaProduk: 'Produk Brokoli',
         deskripsi: 'Permintaan Berhasil Dilakukan',
         tanggal: 'Sep 27',
@@ -21,7 +29,7 @@ class RiwayatController extends GetxController {
         number: 100000,
       ),
       RiwayatModel(
-        image: 'brokoli',
+        image: 'produk2',
         namaProduk: 'Produk Brokoli',
         deskripsi: 'Permintaan Berhasil Dilakukan',
         tanggal: 'Sep 27',

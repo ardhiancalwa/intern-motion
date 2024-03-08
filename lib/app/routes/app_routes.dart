@@ -15,6 +15,9 @@ abstract class Routes {
   static const PRODUK = _Paths.PRODUK;
   static const ADD_PRODUK = _Paths.ADD_PRODUK;
   static const AYAM = _Paths.AYAM;
+  static const UPLOAD_IMAGE = _Paths.UPLOAD_IMAGE;
+  static const SECOND_PAGE = _Paths.SECOND_PAGE;
+  static const BOTTOMNAVBAR = _Paths.BOTTOMNAVBAR;
 }
 
 abstract class _Paths {
@@ -31,4 +34,7 @@ abstract class _Paths {
   static const PRODUK = '/produk';
   static const ADD_PRODUK = '/add-produk';
   static const AYAM = '/ayam';
+  static const UPLOAD_IMAGE = '/upload-image';
+  static const SECOND_PAGE = '/second-page';
+  static const BOTTOMNAVBAR = '/bottomnavbar';
 }

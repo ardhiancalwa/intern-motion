@@ -76,7 +76,7 @@ class RiwayatPendapatanView extends GetView<RiwayatPendapatanController> {
                           color: secondaryColor,
                         ),
                         child: Image.asset(
-                          'assets/images/produk/${riwayatItem.image}.png',
+                          'assets/images/items/${riwayatItem.image}.png',
                           height: 24,
                           width: 24,
                         ),
@@ -118,7 +118,7 @@ class RiwayatPendapatanView extends GetView<RiwayatPendapatanController> {
                 );
               },
             ),
-            bottomNavigationBar: BottomPage(),
+      bottomNavigationBar: BottomPage(),
     );
   }
 }

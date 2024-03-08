@@ -116,7 +116,7 @@ class RiwayatView extends GetView<RiwayatController> {
                 );
               },
             ),
-            bottomNavigationBar: BottomPage(),
+      bottomNavigationBar: BottomPage(),
     );
   }
 }
