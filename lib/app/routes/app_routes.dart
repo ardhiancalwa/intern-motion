@@ -18,6 +18,9 @@ abstract class Routes {
   static const UPLOAD_IMAGE = _Paths.UPLOAD_IMAGE;
   static const SECOND_PAGE = _Paths.SECOND_PAGE;
   static const BOTTOMNAVBAR = _Paths.BOTTOMNAVBAR;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
+  static const EDIT_USER = _Paths.EDIT_USER;
+  static const DETAIL_PRODUK = _Paths.DETAIL_PRODUK;
 }
 
 abstract class _Paths {
@@ -37,4 +40,7 @@ abstract class _Paths {
   static const UPLOAD_IMAGE = '/upload-image';
   static const SECOND_PAGE = '/second-page';
   static const BOTTOMNAVBAR = '/bottomnavbar';
+  static const RESET_PASSWORD = '/reset-password';
+  static const EDIT_USER = '/edit-user';
+  static const DETAIL_PRODUK = '/detail-produk';
 }

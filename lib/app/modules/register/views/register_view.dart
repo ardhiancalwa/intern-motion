@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/themes/colors.dart';
 import '../controllers/register_controller.dart';
@@ -147,7 +148,7 @@ class RegisterView extends GetView<RegisterController> {
                         },
                         child: Text(
                           'Daftar',
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             color: white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -162,13 +163,11 @@ class RegisterView extends GetView<RegisterController> {
                       child: RichText(
                         text: TextSpan(
                           text: 'Sudah memiliki akun?',
-                          style: const TextStyle(
-                            color: Colors.black,
-                          ),
+                          style: GoogleFonts.poppins(color: product),
                           children: [
                             TextSpan(
                               text: ' Login',
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                 color: primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -222,7 +221,7 @@ class InputText extends StatelessWidget {
       controller: textEditingController,
       decoration: InputDecoration(
         labelText: tittle,
-        labelStyle: TextStyle(color: bottomNav),
+        labelStyle: GoogleFonts.poppins(color: bottomNav),
         fillColor: bottomNav,
         focusColor: bottomNav,
         enabledBorder: UnderlineInputBorder(

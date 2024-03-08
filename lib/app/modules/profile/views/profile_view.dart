@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/profile_controller.dart';
@@ -15,8 +16,9 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: accent,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
+        preferredSize: const Size.fromHeight(100),
         child: AppBar(
           backgroundColor: secondaryShade_3,
           leading: Padding(
@@ -34,7 +36,7 @@ class ProfileView extends GetView<ProfileController> {
             stream: FirebaseFirestore.instance.collection('users').snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(); // Placeholder for loading state
+                return const CircularProgressIndicator(); // Placeholder for loading state
               }
               if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
@@ -57,7 +59,9 @@ class ProfileView extends GetView<ProfileController> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.toEditProfileView();
+              },
               icon: Icon(
                 Icons.edit,
                 color: white,
@@ -74,10 +78,10 @@ class ProfileView extends GetView<ProfileController> {
             stream: FirebaseFirestore.instance.collection('users').snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Text('Please wait...');
+                return const Text('Please wait...');
               }
               if (snapshot.hasData == false) {
-                return Text('No Data');
+                return const Text('No Data');
               }
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +114,7 @@ class ProfileView extends GetView<ProfileController> {
                                     padding: const EdgeInsets.all(46.0),
                                     child: Column(
                                       children: [
-                                        Text(
+                                        const Text(
                                           'Logout',
                                           style: TextStyle(
                                             fontSize: 20,
@@ -119,7 +123,7 @@ class ProfileView extends GetView<ProfileController> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 12,
                                         ),
                                         Text(
@@ -130,7 +134,7 @@ class ProfileView extends GetView<ProfileController> {
                                             color: bottomNav,
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 14,
                                         ),
                                         SizedBox(
@@ -155,6 +159,9 @@ class ProfileView extends GetView<ProfileController> {
                                             ),
                                           ),
                                         ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
                                         SizedBox(
                                           width: double.infinity,
                                           child: ElevatedButton(
@@ -163,7 +170,7 @@ class ProfileView extends GetView<ProfileController> {
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(8),
-                                                side: BorderSide(
+                                                side: const BorderSide(
                                                   width: double.infinity,
                                                 ),
                                               ),
@@ -195,7 +202,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                       Text(
                         'Logout Akun',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: primaryColor,
                         ),
                       ),
@@ -207,7 +214,7 @@ class ProfileView extends GetView<ProfileController> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomPage(),
+      bottomNavigationBar: const BottomPage(),
     );
   }
 }
@@ -228,15 +235,17 @@ class TittleUser extends StatelessWidget {
       children: [
         Text(
           fullname,
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: white,
+            fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
         ),
         Text(
           email,
-          style: TextStyle(
-            color: Colors.white,
+          style: GoogleFonts.poppins(
+            color: white,
+            fontWeight: FontWeight.normal,
             fontSize: 15,
           ),
         ),
@@ -267,125 +276,130 @@ class DetailsUser extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 36,
         ),
         Text(
           'Nama Lengkap',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: bottomNav,
+            fontWeight: FontWeight.normal,
             fontSize: 14,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Text(
           fullname,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Text(
           'Email',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: bottomNav,
+            fontWeight: FontWeight.normal,
             fontSize: 14,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Text(
           email,
           // user.email!,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Text(
           'Password',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: bottomNav,
+            fontWeight: FontWeight.normal,
             fontSize: 14,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
-        Text(
+        const Text(
           '********',
           style: TextStyle(
             fontSize: 16,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         GestureDetector(
           onTap: () => controller.toNewPassword(),
           child: Text(
             'Ubah Password?',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.poppins(
               color: primaryColor,
+              fontWeight: FontWeight.normal,
+              fontSize: 14,
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
-        Divider(),
-        SizedBox(
+        const Divider(),
+        const SizedBox(
           height: 16,
         ),
         Text(
           'Alamat',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: bottomNav,
+            fontWeight: FontWeight.normal,
             fontSize: 14,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Text(
           alamat,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Text(
           'Nomor Telepon',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: bottomNav,
+            fontWeight: FontWeight.normal,
             fontSize: 14,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Text(
           nomorTelepon.toString(),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
-        Divider(),
-        SizedBox(
+        const Divider(),
+        const SizedBox(
           height: 16,
         ),
       ],

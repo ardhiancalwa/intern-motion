@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../routes/app_pages.dart';
 import '../controllers/produk_controller.dart';
@@ -20,7 +21,7 @@ class ProdukView extends GetView<ProdukController> {
           backgroundColor: secondaryShade_3,
           title: Text(
             "List Produk",
-            style: TextStyle(
+            style: GoogleFonts.poppins(
               color: white,
               fontWeight: FontWeight.bold,
             ),
@@ -32,7 +33,7 @@ class ProdukView extends GetView<ProdukController> {
               child: TextField(
                 decoration: InputDecoration(
                     hintText: 'Cari Produk',
-                    hintStyle: TextStyle(
+                    hintStyle: GoogleFonts.poppins(
                       color: bottomNav,
                       fontSize: 16,
                     ),
@@ -53,7 +54,163 @@ class ProdukView extends GetView<ProdukController> {
           centerTitle: false,
         ),
       ),
-      endDrawer: Drawer(),
+      endDrawer: Drawer(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 64,
+              ),
+              Image.asset(
+                'assets/images/profil/profile.png',
+                height: 80,
+                width: 80,
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Text(
+                'Tan Hijau',
+                style: GoogleFonts.poppins(
+                  color: product,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Text(
+                'Koperasi',
+                style: GoogleFonts.poppins(
+                  color: product,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                ),
+              ),
+              SizedBox(
+                height: 42,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.dialog(
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(40),
+                        child: Container(
+                          height: 250,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(46.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Logout',
+                                  style: GoogleFonts.poppins(
+                                    color: product,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 12,
+                                ),
+                                Text(
+                                  'Apakah Anda yakin untuk logout dari akun ini?',
+                                  style: GoogleFonts.poppins(
+                                    color: bottomNav,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(
+                                  height: 14,
+                                ),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                    onPressed: () =>
+                                        controller.authController.logout(),
+                                    child: Text(
+                                      'Yes',
+                                      style: GoogleFonts.poppins(
+                                        color: white,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                        side: BorderSide(
+                                          width: double.infinity,
+                                        ),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.logout,
+                      color: primaryColor,
+                    ),
+                    Text(
+                      ' Logout Akun',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        color: secondaryColor,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('produk').snapshots(),
         builder: (context, snapshot) {
@@ -123,6 +280,7 @@ class Produk extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProdukController();
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Container(
@@ -153,7 +311,7 @@ class Produk extends StatelessWidget {
                 children: [
                   Text(
                     namaProduk,
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: product,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
@@ -161,7 +319,7 @@ class Produk extends StatelessWidget {
                   ),
                   Text(
                     'Rp. ${harga.toString()}',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: product,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -179,12 +337,15 @@ class Produk extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.toDetailProdukView();
+                      },
                       child: Text(
                         'Detail',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: white,
                           fontSize: 12,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

@@ -5,11 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  @override
   final controller = Get.put(HomeController());
   final user = FirebaseAuth.instance.currentUser!;
   final _pendapatanController = TextEditingController();
@@ -29,7 +31,7 @@ class HomeView extends GetView<HomeController> {
             stream: FirebaseFirestore.instance.collection('users').snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(); // Placeholder for loading state
+                return const CircularProgressIndicator(); // Placeholder for loading state
               }
               if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
@@ -81,27 +83,25 @@ class HomeView extends GetView<HomeController> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                'Pendapatan',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              Text('Pendapatan',
+                                  style: GoogleFonts.poppins(
+                                    color: product,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )),
                               Text(
                                 'Rp.${controller.homeModel.pendapatan.toString()}',
+                                style: GoogleFonts.poppins(color: product),
                               ),
                             ],
                           ),
                           GestureDetector(
                             onTap: () => controller.toRiwayatPendapatanView(),
-                            child: Text(
-                              'Lihat Riwayat',
-                              style: TextStyle(
-                                color: primaryColor,
-                                fontSize: 14,
-                              ),
-                            ),
+                            child: Text('Lihat Riwayat',
+                                style: GoogleFonts.poppins(
+                                  color: primaryColor,
+                                  fontSize: 14,
+                                )),
                           )
                         ],
                       ),
@@ -120,7 +120,7 @@ class HomeView extends GetView<HomeController> {
                                 height: 237,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20),
                                   ),
@@ -135,30 +135,31 @@ class HomeView extends GetView<HomeController> {
                                     children: [
                                       Text(
                                         'From Tarik Pendapatan ',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
+                                        style: GoogleFonts.poppins(
+                                          color: product,
                                           fontSize: 16,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                       RichText(
                                         text: TextSpan(
                                           text: 'Catatan : ',
-                                          style: TextStyle(
-                                            color: Colors.black,
+                                          style: GoogleFonts.poppins(
+                                            color: product,
                                             fontSize: 10,
                                           ),
                                           children: [
                                             TextSpan(
-                                              text: 'Nominal tidak lebih dari ',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 10,
-                                              ),
-                                            ),
+                                                text:
+                                                    'Nominal tidak lebih dari ',
+                                                style: GoogleFonts.poppins(
+                                                  color: product,
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.bold,
+                                                )),
                                             TextSpan(
                                               text: 'Pemasukan',
-                                              style: TextStyle(
+                                              style: GoogleFonts.poppins(
                                                 color: primaryColor,
                                                 fontSize: 10,
                                               ),
@@ -166,7 +167,7 @@ class HomeView extends GetView<HomeController> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       TextField(
@@ -174,7 +175,8 @@ class HomeView extends GetView<HomeController> {
                                         controller: _pendapatanController,
                                         decoration: InputDecoration(
                                           hintText: '8000',
-                                          hintStyle: TextStyle(
+                                          hintStyle: GoogleFonts.poppins(
+                                            color: product,
                                             fontSize: 16,
                                           ),
                                           enabledBorder: OutlineInputBorder(
@@ -193,7 +195,7 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 12,
                                       ),
                                       Align(
@@ -211,7 +213,8 @@ class HomeView extends GetView<HomeController> {
                                           onPressed: () {
                                             Get.back();
                                             Get.dialog(
-                                              transitionDuration: Duration(
+                                              transitionDuration:
+                                                  const Duration(
                                                 milliseconds: 500,
                                               ),
                                               Center(
@@ -239,26 +242,27 @@ class HomeView extends GetView<HomeController> {
                                                             height: 166,
                                                             width: 260,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             height: 3,
                                                           ),
                                                           Text(
                                                             'Berhasil tarik uang',
-                                                            style: TextStyle(
+                                                            style: GoogleFonts
+                                                                .poppins(
+                                                              color: product,
                                                               fontSize: 16,
-                                                              color:
-                                                                  Colors.black,
                                                               decoration:
                                                                   TextDecoration
                                                                       .none,
                                                             ),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             height: 5,
                                                           ),
                                                           Text(
                                                             'Berhasil tarik dana, estimasi pencairan 2-7 hari, jangan lupa cek notifikasi',
-                                                            style: TextStyle(
+                                                            style: GoogleFonts
+                                                                .poppins(
                                                               color: bottomNav,
                                                               fontSize: 12,
                                                               decoration:
@@ -278,9 +282,10 @@ class HomeView extends GetView<HomeController> {
                                           },
                                           child: Text(
                                             'Tarik',
-                                            style: TextStyle(
+                                            style: GoogleFonts.poppins(
                                               color: white,
                                               fontSize: 12,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                         ),
@@ -291,12 +296,11 @@ class HomeView extends GetView<HomeController> {
                               ),
                             );
                           },
-                          child: Text(
-                            'Tarik Pendapatan',
-                            style: TextStyle(
-                              color: white,
-                            ),
-                          ),
+                          child: Text('Tarik Pendapatan',
+                              style: GoogleFonts.poppins(
+                                color: white,
+                                fontWeight: FontWeight.bold,
+                              )),
                         ),
                       ),
                     ],
@@ -309,14 +313,14 @@ class HomeView extends GetView<HomeController> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Statistik',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 14,
                   ),
                   Row(
@@ -334,12 +338,12 @@ class HomeView extends GetView<HomeController> {
                           children: [
                             Text(
                               controller.homeModel.produkDiterima.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Text(
@@ -364,12 +368,12 @@ class HomeView extends GetView<HomeController> {
                           children: [
                             Text(
                               controller.homeModel.produkDiproses.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Text(
@@ -390,7 +394,7 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomPage(),
+      bottomNavigationBar: const BottomPage(),
     );
   }
 }
@@ -411,19 +415,20 @@ class TitleUser extends StatelessWidget {
         children: [
           Text(
             'Selamat Datang',
-            style: TextStyle(
+            style: GoogleFonts.poppins(
               color: white,
               fontSize: 14,
             ),
           ),
-          Text(
-            fullname,
-            style: TextStyle(
-              color: white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+          const SizedBox(
+            height: 5,
           ),
+          Text(fullname,
+              style: GoogleFonts.poppins(
+                color: white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              )),
         ],
       ),
     );

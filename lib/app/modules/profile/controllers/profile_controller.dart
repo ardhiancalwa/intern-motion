@@ -11,4 +11,8 @@ class ProfileController extends GetxController {
   void toNewPassword() {
     Get.toNamed(Routes.NEW_PASSWORD);
   }
+
+  void toEditProfileView() {
+    Get.toNamed(Routes.EDIT_USER);
+  }
 }

@@ -19,4 +19,8 @@ class LoginController extends GetxController {
   void toRegisterPage() {
     Get.toNamed(Routes.REGISTER);
   }
+
+  void toResetPassword() {
+    Get.toNamed(Routes.RESET_PASSWORD);
+  }
 }

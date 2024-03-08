@@ -2,11 +2,12 @@ import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  LoginView({Key? key}) : super(key: key);
+  const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +33,7 @@ class LoginView extends GetView<LoginController> {
                         controller: controller.emailController,
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          labelStyle: TextStyle(color: bottomNav),
+                          labelStyle: GoogleFonts.poppins(color: bottomNav),
                           fillColor: bottomNav,
                           focusColor: bottomNav,
                           enabledBorder: UnderlineInputBorder(
@@ -51,7 +52,7 @@ class LoginView extends GetView<LoginController> {
                           decoration: InputDecoration(
                             labelText: 'Password',
                             hintStyle: TextStyle(color: bottomNav),
-                            labelStyle: TextStyle(color: bottomNav),
+                            labelStyle: GoogleFonts.poppins(color: bottomNav),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: bottomNav),
                             ),
@@ -81,22 +82,22 @@ class LoginView extends GetView<LoginController> {
                           obscureText: controller.passwordHidden.value,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 28,
                       ),
                       Align(
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            controller.toResetPassword();
+                          },
                           child: Text(
                             'lupa password?',
-                            style: TextStyle(
-                              color: primaryColor,
-                            ),
+                            style: GoogleFonts.poppins(color: primaryColor),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 38,
                       ),
                       SizedBox(
@@ -121,8 +122,8 @@ class LoginView extends GetView<LoginController> {
                                   'Login Berhasil',
                                   backgroundColor: white.withOpacity(0.5),
                                   colorText: primaryColor,
-                                  duration: Duration(seconds: 3),
-                                  animationDuration: Duration(seconds: 1),
+                                  duration: const Duration(seconds: 3),
+                                  animationDuration: const Duration(seconds: 1),
                                 );
                               } else {
                                 Get.snackbar(
@@ -130,8 +131,8 @@ class LoginView extends GetView<LoginController> {
                                   'Coba periksa email dan password anda',
                                   backgroundColor: error.withOpacity(0.1),
                                   colorText: error,
-                                  duration: Duration(seconds: 4),
-                                  animationDuration: Duration(seconds: 1),
+                                  duration: const Duration(seconds: 4),
+                                  animationDuration: const Duration(seconds: 1),
                                 );
                               }
                             }).catchError((error) {
@@ -141,13 +142,14 @@ class LoginView extends GetView<LoginController> {
                           },
                           child: Text(
                             'Masuk',
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               color: white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 48,
                       ),
                       GestureDetector(
@@ -157,13 +159,11 @@ class LoginView extends GetView<LoginController> {
                         child: RichText(
                           text: TextSpan(
                             text: 'Belum memiliki akun?',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
+                            style: GoogleFonts.poppins(color: product),
                             children: [
                               TextSpan(
                                 text: ' Daftar',
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   color: primaryColor,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -175,13 +175,13 @@ class LoginView extends GetView<LoginController> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 68,
                 ),
                 Container(
                   width: double.infinity,
                   height: 149,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/items/sayur.png"),
                       fit: BoxFit.fill,

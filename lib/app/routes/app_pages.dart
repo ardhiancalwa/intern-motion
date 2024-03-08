@@ -2,6 +2,10 @@ import 'package:get/get.dart';
 
 import '../modules/add_produk/bindings/add_produk_binding.dart';
 import '../modules/add_produk/views/add_produk_view.dart';
+import '../modules/detail_produk/bindings/detail_produk_binding.dart';
+import '../modules/detail_produk/views/detail_produk_view.dart';
+import '../modules/edit_user/bindings/edit_user_binding.dart';
+import '../modules/edit_user/views/edit_user_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -14,6 +18,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
+import '../modules/resetPassword/bindings/reset_password_binding.dart';
+import '../modules/resetPassword/views/reset_password_view.dart';
 import '../modules/riwayat/bindings/riwayat_binding.dart';
 import '../modules/riwayat/views/riwayat_view.dart';
 import '../modules/riwayat_pendapatan/bindings/riwayat_pendapatan_binding.dart';
@@ -78,6 +84,21 @@ class AppPages {
       name: _Paths.UPLOAD_IMAGE,
       page: () => const UploadImageView(),
       binding: UploadImageBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => const ResetPasswordView(),
+      binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_USER,
+      page: () => const EditUserView(),
+      binding: EditUserBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_PRODUK,
+      page: () => const DetailProdukView(),
+      binding: DetailProdukBinding(),
     ),
   ];
 }

@@ -1,8 +1,8 @@
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
-import 'package:challenge_motion_week_8/app/shared/widgets/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/new_password_controller.dart';
 
@@ -11,10 +11,21 @@ class NewPasswordView extends GetView<NewPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: accent,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(
+            Icons.keyboard_backspace_rounded,
+            color: white,
+          ),
+        ),
         title: Text(
           'Ubah Password',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: white,
             fontWeight: FontWeight.bold,
           ),
@@ -22,14 +33,119 @@ class NewPasswordView extends GetView<NewPasswordController> {
         backgroundColor: secondaryShade_3,
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [],
-          ),
+      body: Center(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 22,
+                vertical: 36,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    children: [
+                      TextFieldPassword(
+                        controller: controller.passwordLamaController,
+                        title: 'Password',
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextFieldPassword(
+                        controller: controller.passwordBaruController,
+                        title: 'Password Baru',
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextFieldPassword(
+                        controller: controller.passwordKonfirmasiController,
+                        title: 'Konfirmasi Password',
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      backgroundColor: primaryShade_3,
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'Simpan',
+                      style: GoogleFonts.poppins(
+                        color: white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-      bottomNavigationBar: BottomPage(),
+      // bottomNavigationBar: BottomPage(),
+    );
+  }
+}
+
+class TextFieldPassword extends StatelessWidget {
+  final passwordHiddenController = NewPasswordController();
+  TextFieldPassword({
+    super.key,
+    required this.controller,
+    required this.title,
+  });
+
+  TextEditingController controller;
+  String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: title,
+          hintStyle: TextStyle(color: bottomNav),
+          labelStyle: GoogleFonts.poppins(color: bottomNav),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: bottomNav),
+          ),
+          fillColor: bottomNav,
+          focusColor: bottomNav,
+          suffixIcon: IconButton(
+            onPressed: () {
+              passwordHiddenController.passwordHidden.value =
+                  !passwordHiddenController.passwordHidden.value;
+            },
+            icon: passwordHiddenController.passwordHidden.value
+                ? Icon(
+                    Icons.visibility_off,
+                    color: bottomNav,
+                  )
+                : Icon(
+                    Icons.visibility,
+                    color: bottomNav,
+                  ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: bottomNav,
+            ),
+          ),
+        ),
+        obscureText: passwordHiddenController.passwordHidden.value,
+      ),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../data/model/riwayat.dart';
 import '../../../shared/widgets/bottomNavBar.dart';
@@ -17,8 +19,8 @@ class RiwayatView extends GetView<RiwayatController> {
       appBar: AppBar(
         backgroundColor: secondaryShade_3,
         title: Text(
-          'RiwayatView Permintaan',
-          style: TextStyle(
+          'Riwayat Permintaan',
+          style: GoogleFonts.poppins(
             color: white,
             fontWeight: FontWeight.bold,
           ),
@@ -38,17 +40,18 @@ class RiwayatView extends GetView<RiwayatController> {
                   ),
                   Text(
                     'Yah Riwayat Masih Kosong',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
+                      color: product,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     'Anda belum melakukan penambahan permintaan',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
+                      color: bottomNav,
                       fontSize: 14,
                       fontWeight: FontWeight.normal,
-                      color: bottomNav,
                     ),
                   ),
                 ],
@@ -81,15 +84,18 @@ class RiwayatView extends GetView<RiwayatController> {
                       ),
                       title: Text(
                         riwayatItem.namaProduk,
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
+                          color: product,
+                          fontWeight: FontWeight.normal,
                           fontSize: 13,
                         ),
                       ),
                       subtitle: Text(
                         riwayatItem.deskripsi,
-                        style: TextStyle(
-                          fontSize: 12,
+                        style: GoogleFonts.poppins(
                           color: bottomNav,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 12,
                         ),
                       ),
                       trailing: Column(
@@ -97,8 +103,9 @@ class RiwayatView extends GetView<RiwayatController> {
                         children: [
                           Text(
                             riwayatItem.tanggal,
-                            style: TextStyle(
-                              color: bottomNav,
+                            style: GoogleFonts.poppins(
+                              color: product,
+                              fontWeight: FontWeight.bold,
                               fontSize: 10,
                             ),
                           ),
