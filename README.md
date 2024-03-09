@@ -1,4 +1,4 @@
-![Screenshot_1710017483](https://github.com/ardhiancalwa/intern-motion/assets/75600806/0b6f40a3-66cd-45ad-962d-9c64e0ae3d53)![Screenshot_1710017429](https://github.com/ardhiancalwa/intern-motion/assets/75600806/a349e1b8-d4f3-4fb8-b700-9d1179d9a155)# Challenge Motion
+# Challenge Motion
 
 Wekk 8
 
