@@ -15,7 +15,7 @@ class AddProdukView extends GetView<AddProdukController> {
       appBar: AppBar(
         backgroundColor: secondaryShade_3,
         title: Text(
-          'Kirim Permintaan',
+          'Tambahkan Produk',
           style: TextStyle(
             color: white,
             fontSize: 16,

@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../controllers/upload_image_controller.dart';
 
 class UploadImageView extends GetView<UploadImageController> {
@@ -15,7 +16,20 @@ class UploadImageView extends GetView<UploadImageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('UploadImageView'),
+        backgroundColor: secondaryShade_3,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.keyboard_backspace_rounded,
+              color: white,
+            )),
+        title: Text(
+          'Tambahkan Gambar',
+          style: GoogleFonts.poppins(
+            color: white,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Obx(
