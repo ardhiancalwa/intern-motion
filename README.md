@@ -1,16 +1,10 @@
-# challenge_motion_week_8
+# Todo List App
 
-A new Flutter project.
+Assignment Week 7
 
-## Getting Started
+- Terurut sesuai status checknya
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+  <img src="https://github.com/ardhiancalwa/intern-motion/assets/75600806/dffb524b-ae4a-4337-a4d8-ecb650e4adb9" alt="Transaction Page" style="width:30%;">
+  <img src="https://github.com/ardhiancalwa/intern-motion/assets/75600806/a43b918c-5bce-4c0a-a438-d95db9297576" alt="Product Detail Page" style="width:30%;">
+</p>d
