@@ -58,15 +58,18 @@ class ProfileView extends GetView<ProfileController> {
             },
           ),
           actions: [
-            IconButton(
-              onPressed: () {
-                controller.toEditProfileView();
-              },
-              icon: Icon(
-                Icons.edit,
-                color: white,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: GestureDetector(
+                onTap: () {
+                  controller.toEditProfileView();
+                },
+                child: Image.asset(
+                  'assets/icons/brush.png',
+                  color: white,
+                ),
               ),
-            )
+            ),
           ],
           centerTitle: false,
         ),
@@ -94,119 +97,121 @@ class ProfileView extends GetView<ProfileController> {
                       alamat: documents.data()['alamat'],
                       nomorTelepon: documents.data()['nomor_telepon'],
                     ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Get.dialog(
-                            Center(
+                  GestureDetector(
+                    onTap: () {
+                      Get.dialog(
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(40),
+                            child: Container(
+                              height: 250,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: white,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                               child: Padding(
-                                padding: const EdgeInsets.all(40),
-                                child: Container(
-                                  height: 250,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(46.0),
-                                    child: Column(
-                                      children: [
-                                        const Text(
-                                          'Logout',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            decoration: TextDecoration.none,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                        Text(
-                                          'Apakah Anda yakin untuk logout dari akun ini?',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            decoration: TextDecoration.none,
-                                            color: bottomNav,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 14,
-                                        ),
-                                        SizedBox(
-                                          width: double.infinity,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: primaryColor,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                            ),
-                                            onPressed: () => controller
-                                                .authController
-                                                .logout(),
-                                            child: Text(
-                                              'Yes',
-                                              style: TextStyle(
-                                                color: white,
-                                                fontSize: 18,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
-                                        SizedBox(
-                                          width: double.infinity,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: white,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                side: const BorderSide(
-                                                  width: double.infinity,
-                                                ),
-                                              ),
-                                            ),
-                                            onPressed: () {
-                                              Get.back();
-                                            },
-                                            child: Text(
-                                              'No',
-                                              style: TextStyle(
-                                                color: primaryColor,
-                                                fontSize: 18,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                padding: const EdgeInsets.all(46.0),
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      'Logout',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        decoration: TextDecoration.none,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
+                                    const SizedBox(
+                                      height: 12,
+                                    ),
+                                    Text(
+                                      'Apakah Anda yakin untuk logout dari akun ini?',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        decoration: TextDecoration.none,
+                                        color: bottomNav,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 14,
+                                    ),
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: primaryColor,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                        ),
+                                        onPressed: () =>
+                                            controller.authController.logout(),
+                                        child: Text(
+                                          'Yes',
+                                          style: TextStyle(
+                                            color: white,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            side: const BorderSide(
+                                              width: double.infinity,
+                                            ),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        child: Text(
+                                          'No',
+                                          style: TextStyle(
+                                            color: primaryColor,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          );
-                        },
-                        icon: Icon(
-                          Icons.logout,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/icons/logout.png',
                           color: primaryColor,
                         ),
-                      ),
-                      Text(
-                        'Logout Akun',
-                        style: GoogleFonts.poppins(
-                          color: primaryColor,
+                        SizedBox(
+                          width: 10,
                         ),
-                      ),
-                    ],
+                        Text(
+                          'Logout Akun',
+                          style: GoogleFonts.poppins(
+                            color: primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               );

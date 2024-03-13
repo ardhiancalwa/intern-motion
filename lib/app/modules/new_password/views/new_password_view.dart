@@ -129,12 +129,12 @@ class TextFieldPassword extends StatelessWidget {
                   !passwordHiddenController.passwordHidden.value;
             },
             icon: passwordHiddenController.passwordHidden.value
-                ? Icon(
-                    Icons.visibility_off,
+                ? Image.asset(
+                    'assets/icons/eye-slash.png',
                     color: bottomNav,
                   )
-                : Icon(
-                    Icons.visibility,
+                : Image.asset(
+                    'assets/icons/eye.png',
                     color: bottomNav,
                   ),
           ),

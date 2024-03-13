@@ -59,19 +59,20 @@ class LoginView extends GetView<LoginController> {
                             fillColor: bottomNav,
                             focusColor: bottomNav,
                             suffixIcon: IconButton(
-                                onPressed: () {
-                                  controller.passwordHidden.value =
-                                      !controller.passwordHidden.value;
-                                },
-                                icon: controller.passwordHidden.value
-                                    ? Image.asset(
-                                        'assets/icons/eye-slash.png',
-                                        color: bottomNav,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/eye.png',
-                                        color: bottomNav,
-                                      )),
+                              onPressed: () {
+                                controller.passwordHidden.value =
+                                    !controller.passwordHidden.value;
+                              },
+                              icon: controller.passwordHidden.value
+                                  ? Image.asset(
+                                      'assets/icons/eye-slash.png',
+                                      color: bottomNav,
+                                    )
+                                  : Image.asset(
+                                      'assets/icons/eye.png',
+                                      color: bottomNav,
+                                    ),
+                            ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: bottomNav,
