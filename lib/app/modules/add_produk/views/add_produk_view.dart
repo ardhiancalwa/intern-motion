@@ -147,7 +147,7 @@ class AddProdukView extends GetView<AddProdukController> {
                   ),
                   onPressed: () {
                     controller.authController
-                        .signUpProduk(
+                        .addProduk(
                       controller.namaProdukController.text,
                       controller.hargaController.text,
                       controller.kategoriController.text,

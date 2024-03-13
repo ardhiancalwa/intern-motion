@@ -395,7 +395,7 @@ class DetailsUser extends StatelessWidget {
           height: 8,
         ),
         Text(
-          nomorTelepon.toString(),
+          '+62${nomorTelepon.toString()}',
           style: const TextStyle(
             fontSize: 16,
           ),

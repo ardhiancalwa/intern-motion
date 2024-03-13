@@ -77,7 +77,25 @@ class NewPasswordView extends GetView<NewPasswordController> {
                       ),
                       backgroundColor: primaryShade_3,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      String newPassword =
+                          controller.passwordBaruController.text;
+                      String oldPassword =
+                          controller.passwordLamaController.text;
+                      if (newPassword ==
+                          controller.passwordKonfirmasiController.text) {
+                        controller.authController
+                            .reauthenticateUser(oldPassword, newPassword);
+                      } else {
+                        Get.snackbar(
+                          'Error',
+                          'Silahkan cek kembali password anda!',
+                          backgroundColor: error.withOpacity(0.5),
+                          colorText: white,
+                        );
+                      }
+                      Get.back();
+                    },
                     child: Text(
                       'Simpan',
                       style: GoogleFonts.poppins(

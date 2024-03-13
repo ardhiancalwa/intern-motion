@@ -1,4 +1,5 @@
 import 'package:challenge_motion_week_8/app/routes/app_pages.dart';
+import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,39 @@ class AuthController extends GetxController {
     }
   }
 
+  void reauthenticateUser(String oldPassword, String newPassword) async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        // Re-authenticate user before updating password
+        AuthCredential credential = EmailAuthProvider.credential(
+          email: user.email!,
+          password: oldPassword,
+        );
+        await user.reauthenticateWithCredential(credential);
+
+        // Update password
+        await user.updatePassword(newPassword);
+
+        Get.snackbar(
+          'Success',
+          'Password updated successfully',
+          backgroundColor: primaryColor.withOpacity(0.5),
+          colorText: white,
+        );
+      } else {
+        Get.snackbar(
+          'Error',
+          'User not found',
+          backgroundColor: error.withOpacity(0.5),
+          colorText: white,
+        );
+      }
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
+  }
+
   void signUp(String email, String password, String fullname, String alamat,
       int nomorTelepon) async {
     try {
@@ -63,7 +97,7 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<bool> signUpProduk(String name, String harga, String kategori,
+  Future<bool> addProduk(String name, String harga, String kategori,
       String stok, String durasiTahan, String deskripsi, String gram) async {
     try {
       await FirebaseFirestore.instance.collection('produk').add({
