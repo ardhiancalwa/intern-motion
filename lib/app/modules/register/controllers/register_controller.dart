@@ -13,6 +13,7 @@ class RegisterController extends GetxController {
   final authController = Get.find<AuthController>();
 
   var passwordHidden = true.obs;
+  var confirmPasswordHidden = true.obs;
 
   @override
   void dispose() {

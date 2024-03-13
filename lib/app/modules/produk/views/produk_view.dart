@@ -42,9 +42,11 @@ class ProdukView extends GetView<ProdukController> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none),
-                    suffixIcon: Icon(
-                      Icons.search,
+                    suffixIcon: Image.asset(
+                      'assets/icons/search-normal.png',
                       color: bottomNav,
+                      height: 12,
+                      width: 12,
                     ),
                     contentPadding: EdgeInsets.symmetric(horizontal: 20)),
               ),

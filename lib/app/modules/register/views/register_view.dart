@@ -64,12 +64,12 @@ class RegisterView extends GetView<RegisterController> {
                                   !controller.passwordHidden.value;
                             },
                             icon: controller.passwordHidden.value
-                                ? Icon(
-                                    Icons.visibility_off,
+                                ? Image.asset(
+                                    'assets/icons/eye-slash.png',
                                     color: bottomNav,
                                   )
-                                : Icon(
-                                    Icons.visibility,
+                                : Image.asset(
+                                    'assets/icons/eye.png',
                                     color: bottomNav,
                                   ),
                           ),
@@ -96,16 +96,16 @@ class RegisterView extends GetView<RegisterController> {
                           focusColor: bottomNav,
                           suffixIcon: IconButton(
                             onPressed: () {
-                              controller.passwordHidden.value =
-                                  !controller.passwordHidden.value;
+                              controller.confirmPasswordHidden.value =
+                                  !controller.confirmPasswordHidden.value;
                             },
-                            icon: controller.passwordHidden.value
-                                ? Icon(
-                                    Icons.visibility_off,
+                            icon: controller.confirmPasswordHidden.value
+                                ? Image.asset(
+                                    'assets/icons/eye-slash.png',
                                     color: bottomNav,
                                   )
-                                : Icon(
-                                    Icons.visibility,
+                                : Image.asset(
+                                    'assets/icons/eye.png',
                                     color: bottomNav,
                                   ),
                           ),

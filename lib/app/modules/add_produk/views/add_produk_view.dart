@@ -30,7 +30,7 @@ class AddProdukView extends GetView<AddProdukController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Foto Produk',
               ),
               Container(
@@ -44,7 +44,7 @@ class AddProdukView extends GetView<AddProdukController> {
                   onTap: () {
                     controller.toUploadImageView();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.camera_alt_outlined,
                     size: 24,
                   ),
@@ -86,7 +86,7 @@ class AddProdukView extends GetView<AddProdukController> {
                 keyboard: TextInputType.text,
                 textEditingController: controller.durasiController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Text(
@@ -96,7 +96,7 @@ class AddProdukView extends GetView<AddProdukController> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               RichText(
@@ -133,7 +133,7 @@ class AddProdukView extends GetView<AddProdukController> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               SizedBox(
@@ -164,8 +164,8 @@ class AddProdukView extends GetView<AddProdukController> {
                           'Produk berhasil ditambahkan',
                           backgroundColor: white.withOpacity(0.5),
                           colorText: primaryColor,
-                          duration: Duration(seconds: 3),
-                          animationDuration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 3),
+                          animationDuration: const Duration(seconds: 1),
                         );
                       }
                     }).catchError((error) {
@@ -175,8 +175,8 @@ class AddProdukView extends GetView<AddProdukController> {
                         'Terjadi kesalahan saat menambahkan produk. Silakan coba lagi.',
                         backgroundColor: error.withOpacity(0.1),
                         colorText: error,
-                        duration: Duration(seconds: 4),
-                        animationDuration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 4),
+                        animationDuration: const Duration(seconds: 1),
                       );
                     });
                   },
