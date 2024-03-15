@@ -284,7 +284,7 @@ class Produk extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = ProdukController();
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
       child: Container(
         decoration: BoxDecoration(
           color: white,

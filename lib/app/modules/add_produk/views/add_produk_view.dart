@@ -1,4 +1,3 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -14,6 +13,16 @@ class AddProdukView extends GetView<AddProdukController> {
       backgroundColor: accent,
       appBar: AppBar(
         backgroundColor: secondaryShade_3,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(
+            Icons.keyboard_backspace_rounded,
+            color: white,
+          ),
+        ),
         title: Text(
           'Tambahkan Produk',
           style: TextStyle(
