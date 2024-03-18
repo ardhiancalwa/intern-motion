@@ -53,7 +53,7 @@ class EditUserView extends GetView<EditUserController> {
                           width: 80,
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.camera_alt_outlined,
                         color: Colors.white,
                       ),
@@ -83,7 +83,7 @@ class EditUserView extends GetView<EditUserController> {
                     keyboard: TextInputType.number,
                     textEditingController: controller.nomorTeleponController,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 180,
                   ),
                   ElevatedButton(
@@ -108,7 +108,7 @@ class EditUserView extends GetView<EditUserController> {
                       }
                     },
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 25),
+                      margin: const EdgeInsets.symmetric(horizontal: 25),
                       child: Text(
                         'Simpan',
                         style: GoogleFonts.poppins(

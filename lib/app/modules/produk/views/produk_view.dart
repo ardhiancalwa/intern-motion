@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../../shared/widgets/produk_widget.dart';
 import '../controllers/produk_controller.dart';
 
 class ProdukView extends GetView<ProdukController> {
@@ -15,7 +16,7 @@ class ProdukView extends GetView<ProdukController> {
     return Scaffold(
       backgroundColor: accent,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(130),
+        preferredSize: const Size.fromHeight(130),
         child: AppBar(
           primary: true,
           backgroundColor: secondaryShade_3,
@@ -27,32 +28,33 @@ class ProdukView extends GetView<ProdukController> {
             ),
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(30),
+            preferredSize: const Size.fromHeight(30),
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: TextField(
                 decoration: InputDecoration(
-                    hintText: 'Cari Produk',
-                    hintStyle: GoogleFonts.poppins(
-                      color: bottomNav,
-                      fontSize: 16,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none),
-                    suffixIcon: Image.asset(
-                      'assets/icons/search-normal.png',
-                      color: bottomNav,
-                      height: 12,
-                      width: 12,
-                    ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20)),
+                  hintText: 'Cari Produk',
+                  hintStyle: GoogleFonts.poppins(
+                    color: bottomNav,
+                    fontSize: 16,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none),
+                  suffixIcon: Image.asset(
+                    'assets/icons/search-normal.png',
+                    color: bottomNav,
+                    height: 12,
+                    width: 12,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                ),
               ),
             ),
           ),
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           centerTitle: false,
         ),
       ),
@@ -60,7 +62,7 @@ class ProdukView extends GetView<ProdukController> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 64,
               ),
               Image.asset(
@@ -68,7 +70,7 @@ class ProdukView extends GetView<ProdukController> {
                 height: 80,
                 width: 80,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Text(
@@ -79,7 +81,7 @@ class ProdukView extends GetView<ProdukController> {
                   fontSize: 16,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Text(
@@ -90,7 +92,7 @@ class ProdukView extends GetView<ProdukController> {
                   fontSize: 14,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 42,
               ),
               GestureDetector(
@@ -119,7 +121,7 @@ class ProdukView extends GetView<ProdukController> {
                                     decoration: TextDecoration.none,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 12,
                                 ),
                                 Text(
@@ -132,7 +134,7 @@ class ProdukView extends GetView<ProdukController> {
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 14,
                                 ),
                                 SizedBox(
@@ -156,7 +158,7 @@ class ProdukView extends GetView<ProdukController> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 SizedBox(
@@ -166,7 +168,7 @@ class ProdukView extends GetView<ProdukController> {
                                       backgroundColor: white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
-                                        side: BorderSide(
+                                        side: const BorderSide(
                                           width: double.infinity,
                                         ),
                                       ),
@@ -224,7 +226,7 @@ class ProdukView extends GetView<ProdukController> {
                       .snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
+                      return const Center(
                         child:
                             CircularProgressIndicator(), // Placeholder for loading state
                       );
@@ -235,13 +237,14 @@ class ProdukView extends GetView<ProdukController> {
                       );
                     }
                     if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
-                      return Center(
+                      return const Center(
                         child: Text(
                             'No data available'), // Placeholder for empty state
                       );
                     }
                     return GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         childAspectRatio: 3 / 4,
                       ),
@@ -272,111 +275,19 @@ class ProdukView extends GetView<ProdukController> {
                   Get.toNamed(Routes.ADD_PRODUK);
                 },
                 elevation: 2.0,
-                fillColor: primaryColor, // Change this to your desired color
-                child: Icon(
+                fillColor: primaryColor,
+                padding: const EdgeInsets.all(15.0),
+                shape:
+                    const CircleBorder(), // Change this to your desired color
+                child: const Icon(
                   Icons.add,
                   size: 35.0,
                   color: Colors.white, // Change this to your desired color
                 ),
-                padding: EdgeInsets.all(15.0),
-                shape: CircleBorder(),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Produk extends StatelessWidget {
-  String image;
-  String namaProduk;
-  String harga;
-  Produk({
-    super.key,
-    required this.image,
-    required this.namaProduk,
-    required this.harga,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = ProdukController();
-    return Padding(
-      padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
-      child: Container(
-        decoration: BoxDecoration(
-          color: white,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          children: [
-            Container(
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                ),
-                image: DecorationImage(
-                  image: AssetImage(image),
-                  // fit: BoxFit.contain,
-                ),
-                color: primaryShade_1,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    namaProduk,
-                    style: GoogleFonts.poppins(
-                      color: product,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    'Rp. ${harga.toString()}',
-                    style: GoogleFonts.poppins(
-                      color: product,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: primaryShade_3,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      onPressed: () {
-                        controller.toDetailProdukView();
-                      },
-                      child: Text(
-                        'Detail',
-                        style: GoogleFonts.poppins(
-                          color: white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

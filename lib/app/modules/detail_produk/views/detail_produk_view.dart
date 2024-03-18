@@ -41,7 +41,7 @@ class DetailProdukView extends GetView<DetailProdukController> {
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child:
                   CircularProgressIndicator(), // Placeholder for loading state
             );
@@ -52,7 +52,7 @@ class DetailProdukView extends GetView<DetailProdukController> {
             );
           }
           if (!snapshot.hasData || !snapshot.data!.exists) {
-            return Center(
+            return const Center(
               child: Text(
                   'Document does not exist'), // Placeholder for non-existent document
             );
@@ -136,7 +136,7 @@ class DetailContent extends StatelessWidget {
           ),
         ),
         Text(
-          'Rp. ${harga}',
+          'Rp. $harga',
           style: GoogleFonts.poppins(
             color: product,
             fontSize: 14,
@@ -149,7 +149,7 @@ class DetailContent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TabBar(
-                tabs: [
+                tabs: const [
                   Tab(text: 'Detail'),
                   Tab(text: 'Status'),
                 ],
@@ -158,10 +158,10 @@ class DetailContent extends StatelessWidget {
                 indicatorColor: primaryColor,
                 indicatorSize: TabBarIndicatorSize.tab,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Container(
+              SizedBox(
                 height:
                     200, // Adjust the height of the tab content area as needed
                 child: TabBarView(
@@ -180,7 +180,7 @@ class DetailContent extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Row(
@@ -195,7 +195,7 @@ class DetailContent extends StatelessWidget {
                                         fontSize: 13,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
@@ -207,7 +207,7 @@ class DetailContent extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 120,
                                 ),
                                 Column(
@@ -220,7 +220,7 @@ class DetailContent extends StatelessWidget {
                                         fontSize: 13,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
@@ -234,7 +234,7 @@ class DetailContent extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Row(
@@ -249,7 +249,7 @@ class DetailContent extends StatelessWidget {
                                         fontSize: 13,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
@@ -261,7 +261,7 @@ class DetailContent extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 90,
                                 ),
                                 Column(
@@ -274,7 +274,7 @@ class DetailContent extends StatelessWidget {
                                         fontSize: 13,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
@@ -292,7 +292,7 @@ class DetailContent extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Center(
+                    const Center(
                       child: Text('Status Tab Content'),
                     ),
                   ],

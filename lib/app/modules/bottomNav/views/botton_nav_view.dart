@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../shared/themes/colors.dart';
-import '../../home/controllers/home_controller.dart';
 import '../controllers/botton_nav_controller.dart';
 
 class BottonNavView extends GetView<BottonNavController> {
+  @override
   final BottonNavController controller = Get.put(BottonNavController());
   BottonNavView({Key? key}) : super(key: key);
   @override
@@ -21,7 +21,7 @@ class BottonNavView extends GetView<BottonNavController> {
           index: controller.tabIndex.value, // Menggunakan nilai reaktif
           children: [
             HomeView(),
-            ProdukView(),
+            const ProdukView(),
             RiwayatView(),
             ProfileView(), // Placeholder untuk HistoryScreen
             // Tambahkan lebih banyak screen jika diperlukan
@@ -38,21 +38,21 @@ class BottonNavView extends GetView<BottonNavController> {
           items: [
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage('assets/icons/home-2.png'),
+                const AssetImage('assets/icons/home-2.png'),
                 color: bottomNav,
               ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage('assets/icons/harvest.png'),
+                const AssetImage('assets/icons/harvest.png'),
                 color: bottomNav,
               ),
               label: 'Produk',
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage('assets/icons/transaction-minus.png'),
+                const AssetImage('assets/icons/transaction-minus.png'),
                 color: bottomNav,
               ),
               label: 'Riwayat',
@@ -60,10 +60,10 @@ class BottonNavView extends GetView<BottonNavController> {
             // Tambahkan lebih banyak item jika diperlukan
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage('assets/icons/harvest.png'),
+                const AssetImage('assets/icons/profile-circle.png'),
                 color: bottomNav,
               ),
-              label: 'Produk',
+              label: 'Profil',
             ),
           ],
         ),

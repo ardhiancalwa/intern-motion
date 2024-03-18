@@ -40,7 +40,7 @@ class UploadImageView extends GetView<UploadImageController> {
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(0),
                 itemCount: controller.listOfImage.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   mainAxisSpacing: 3.0,
                   crossAxisSpacing: 3.0,
@@ -84,7 +84,7 @@ class UploadImageView extends GetView<UploadImageController> {
                                               .listOfImage[index].assetName ||
                                       controller.listOfStr.contains(controller
                                           .listOfImage[index].assetName)
-                                  ? Positioned(
+                                  ? const Positioned(
                                       left: 0,
                                       bottom: 0,
                                       child: Icon(
@@ -92,7 +92,7 @@ class UploadImageView extends GetView<UploadImageController> {
                                         color: Colors.green,
                                       ),
                                     )
-                                  : Visibility(
+                                  : const Visibility(
                                       visible: false,
                                       child: Icon(
                                         Icons.check_circle_outline,
@@ -122,7 +122,7 @@ class UploadImageView extends GetView<UploadImageController> {
                     ),
                     backgroundColor: primaryShade_3,
                   ),
-                  child: Text(
+                  child: const Text(
                     "Save Images",
                     style: TextStyle(
                       color: Colors.white,
@@ -154,7 +154,7 @@ class UploadImageView extends GetView<UploadImageController> {
                             .add({"url": downloadUrl, "name": imageName});
                         controller.isLoading.value = false;
                         final snackBar =
-                            SnackBar(content: Text('Yay! Success'));
+                            const SnackBar(content: Text('Yay! Success'));
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       } else {
                         print(

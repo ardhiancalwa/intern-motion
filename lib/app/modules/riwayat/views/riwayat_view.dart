@@ -2,14 +2,13 @@ import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../data/model/riwayat.dart';
-import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/riwayat_controller.dart';
 
 class RiwayatView extends GetView<RiwayatController> {
+  @override
   final controller = Get.put(RiwayatController());
   RiwayatView({Key? key}) : super(key: key);
   @override
@@ -35,7 +34,7 @@ class RiwayatView extends GetView<RiwayatController> {
                   Image.asset(
                     'assets/images/isEmpty/kosong.png',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 28,
                   ),
                   Text(
@@ -123,7 +122,6 @@ class RiwayatView extends GetView<RiwayatController> {
                 );
               },
             ),
-      // bottomNavigationBar: BottomPage(),
     );
   }
 }

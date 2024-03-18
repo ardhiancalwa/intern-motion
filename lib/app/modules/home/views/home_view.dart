@@ -1,4 +1,3 @@
-import 'package:challenge_motion_week_8/app/controllers/landing_page_controller.dart';
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// import '../../../shared/widgets/bottomNavBar.dart';
+import '../../../shared/widgets/bannerUser_widget.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -15,7 +14,6 @@ class HomeView extends GetView<HomeController> {
   final controller = Get.put(HomeController());
   final user = FirebaseAuth.instance.currentUser!;
   final _pendapatanController = TextEditingController();
-  final landingPageController = LandingPageController();
 
   HomeView({Key? key}) : super(key: key);
   @override
@@ -393,83 +391,6 @@ class HomeView extends GetView<HomeController> {
             ],
           ),
         ),
-      ),
-      // bottomNavigationBar: const BottomPage(),
-      // bottomNavigationBar: Obx(
-      //   () => BottomNavigationBar(
-      //     currentIndex: controller.tabIndex.value,
-      //     fixedColor: primaryColor,
-      //     showUnselectedLabels: true,
-      //     unselectedItemColor: bottomNav,
-      //     onTap: controller.changeTabIndex,
-      //     // onTap: _onTap,
-      //     items: [
-      //       BottomNavigationBarItem(
-      //         icon: ImageIcon(
-      //           AssetImage('assets/icons/harvest.png'),
-      //           color: bottomNav,
-      //         ),
-      //         label: 'Produk',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: ImageIcon(
-      //           AssetImage('assets/icons/harvest.png'),
-      //           color: bottomNav,
-      //         ),
-      //         label: 'Produk',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: ImageIcon(
-      //           AssetImage('assets/icons/transaction-minus.png'),
-      //           color: bottomNav,
-      //         ),
-      //         label: 'Riwayat',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: ImageIcon(
-      //           AssetImage('assets/icons/harvest.png'),
-      //           color: bottomNav,
-      //         ),
-      //         label: 'Produk',
-      //       ),
-      //     ],
-      //   ),
-      // ),
-    );
-  }
-}
-
-class TitleUser extends StatelessWidget {
-  String fullname;
-  TitleUser({
-    super.key,
-    required this.fullname,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Selamat Datang',
-            style: GoogleFonts.poppins(
-              color: white,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(fullname,
-              style: GoogleFonts.poppins(
-                color: white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              )),
-        ],
       ),
     );
   }
