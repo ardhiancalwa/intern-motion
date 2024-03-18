@@ -1,3 +1,4 @@
+import 'package:challenge_motion_week_8/app/routes/app_pages.dart';
 import 'package:challenge_motion_week_8/app/shared/themes/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -62,7 +62,7 @@ class ProfileView extends GetView<ProfileController> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
                 onTap: () {
-                  controller.toEditProfileView();
+                  Get.toNamed(Routes.EDIT_USER);
                 },
                 child: Image.asset(
                   'assets/icons/brush.png',
@@ -148,7 +148,7 @@ class ProfileView extends GetView<ProfileController> {
                                           ),
                                         ),
                                         onPressed: () =>
-                                            controller.authController.logout(),
+                                            Get.offAllNamed(Routes.LOGIN),
                                         child: Text(
                                           'Yes',
                                           style: TextStyle(
@@ -201,7 +201,7 @@ class ProfileView extends GetView<ProfileController> {
                           'assets/icons/logout.png',
                           color: primaryColor,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
@@ -219,7 +219,6 @@ class ProfileView extends GetView<ProfileController> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomPage(),
     );
   }
 }

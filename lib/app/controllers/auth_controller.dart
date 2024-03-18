@@ -15,7 +15,7 @@ class AuthController extends GetxController {
         email: email,
         password: password,
       );
-      Get.offAllNamed(Routes.HOME);
+      Get.offAllNamed(Routes.BOTTON_NAV);
       FirebaseAuth.instance.authStateChanges().listen((User? user) {
         if (user != null) {
           print(user.uid);
@@ -79,7 +79,7 @@ class AuthController extends GetxController {
   void signUp(String email, String password, String fullname, String alamat,
       int nomorTelepon) async {
     try {
-      Get.offAllNamed(Routes.HOME);
+      Get.offAllNamed(Routes.BOTTON_NAV);
       await FirebaseFirestore.instance.collection('users').add({
         'fullname': fullname,
         'email': email,

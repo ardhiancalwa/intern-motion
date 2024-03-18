@@ -24,4 +24,10 @@ class HomeController extends GetxController {
   void toRiwayatPendapatanView() {
     Get.toNamed(Routes.RIWAYAT_PENDAPATAN);
   }
+
+  var tabIndex = 0.obs;
+
+  void changeTabIndex(int index) {
+    tabIndex.value = index; 
+  }
 }

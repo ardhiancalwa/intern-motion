@@ -1,5 +1,6 @@
 import 'package:challenge_motion_week_8/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/auth_controller.dart';
@@ -14,5 +15,10 @@ class ProfileController extends GetxController {
 
   void toEditProfileView() {
     Get.toNamed(Routes.EDIT_USER);
+  }
+
+  void toLoginView() async {
+    await FirebaseAuth.instance.signOut();
+    Get.offAllNamed(Routes.LOGIN);
   }
 }

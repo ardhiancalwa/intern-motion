@@ -37,7 +37,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 22,
                 vertical: 36,
               ),
@@ -51,14 +51,14 @@ class NewPasswordView extends GetView<NewPasswordController> {
                         controller: controller.passwordLamaController,
                         title: 'Password',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       TextFieldPassword(
                         controller: controller.passwordBaruController,
                         title: 'Password Baru',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       TextFieldPassword(
@@ -67,7 +67,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   ElevatedButton(

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../shared/widgets/bottomNavBar.dart';
+// import '../../../shared/widgets/bottomNavBar.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -394,7 +394,47 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomPage(),
+      // bottomNavigationBar: const BottomPage(),
+      // bottomNavigationBar: Obx(
+      //   () => BottomNavigationBar(
+      //     currentIndex: controller.tabIndex.value,
+      //     fixedColor: primaryColor,
+      //     showUnselectedLabels: true,
+      //     unselectedItemColor: bottomNav,
+      //     onTap: controller.changeTabIndex,
+      //     // onTap: _onTap,
+      //     items: [
+      //       BottomNavigationBarItem(
+      //         icon: ImageIcon(
+      //           AssetImage('assets/icons/harvest.png'),
+      //           color: bottomNav,
+      //         ),
+      //         label: 'Produk',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: ImageIcon(
+      //           AssetImage('assets/icons/harvest.png'),
+      //           color: bottomNav,
+      //         ),
+      //         label: 'Produk',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: ImageIcon(
+      //           AssetImage('assets/icons/transaction-minus.png'),
+      //           color: bottomNav,
+      //         ),
+      //         label: 'Riwayat',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: ImageIcon(
+      //           AssetImage('assets/icons/harvest.png'),
+      //           color: bottomNav,
+      //         ),
+      //         label: 'Produk',
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

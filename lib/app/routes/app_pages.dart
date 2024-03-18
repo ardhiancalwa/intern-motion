@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add_produk/bindings/add_produk_binding.dart';
 import '../modules/add_produk/views/add_produk_view.dart';
+import '../modules/bottomNav/bindings/botton_nav_binding.dart';
+import '../modules/bottomNav/views/botton_nav_view.dart';
 import '../modules/detail_produk/bindings/detail_produk_binding.dart';
 import '../modules/detail_produk/views/detail_produk_view.dart';
 import '../modules/edit_user/bindings/edit_user_binding.dart';
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.DETAIL_PRODUK,
       page: () => const DetailProdukView(),
       binding: DetailProdukBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOTTON_NAV,
+      page: () => BottonNavView(),
+      binding: BottonNavBinding(),
     ),
   ];
 }
